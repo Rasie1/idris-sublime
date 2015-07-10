@@ -10,7 +10,7 @@ class RunIdrisCommandCommand(sublime_plugin.TextCommand):
     def run(self, edit, cmd=None, editing=True):
         v = self.view
         cursor = v.sel()[0].begin()
-        (r,c) = v.rowcol(cursor) 
+        (r,c) = v.rowcol(cursor)
         line = r + 1
         name = v.substr(v.word(cursor))
         # filename = v.file_name()
@@ -26,10 +26,10 @@ class RunIdrisCommandCommand(sublime_plugin.TextCommand):
                     idris_cmd(cmd, str(line), name),
                     env=env,
                     stdout=subprocess.PIPE
-                ) 
+                )
             exit_code = idris_p.wait()
             if exit_code != 0:
-                if exit_code == 127: 
+                if exit_code == 127:
                     sublime.error_message("idris is not found in Sublime's PATH: " + env["PATH"])
                 return None
             else:
@@ -37,8 +37,9 @@ class RunIdrisCommandCommand(sublime_plugin.TextCommand):
                 print(output)
                 if output:
                     out_panel = v.window().create_output_panel("idris_panel")
+                    # out_panel.run_command("append", {"characters": "> " + " ".join(idris_cmd(cmd, str(line), name)) + "\n"})
                     out_panel.run_command("append", {"characters": output})
-                    out_panel.set_syntax_file("Packages/sublime-idris/Idris.tmLanguage")
+                    out_panel.set_syntax_file("Packages/idris-sublime/Idris.tmLanguage")
                     v.window().run_command("show_panel", {"panel": "output.idris_panel"})
 
         if cmd: run_cmd(cmd)
