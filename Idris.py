@@ -37,7 +37,7 @@ class RunIdrisCommandCommand(sublime_plugin.TextCommand):
                 print(output)
                 if output:
                     out_panel = v.window().create_output_panel("idris_panel")
-                    # out_panel.run_command("append", {"characters": "> " + " ".join(idris_cmd(cmd, str(line), name)) + "\n"})
+                    out_panel.run_command("append", {"characters": "> " + " ".join(idris_cmd(cmd, str(line), name)) + "\n"})
                     out_panel.run_command("append", {"characters": output})
                     out_panel.set_syntax_file("Packages/idris-sublime/Idris.tmLanguage")
                     v.window().run_command("show_panel", {"panel": "output.idris_panel"})
