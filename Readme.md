@@ -2,7 +2,7 @@
 
 - Syntax definition is developed based on the [SublimeHaskell](https://github.com/SublimeHaskell/SublimeHaskell) plugin using the [AAAPackageDev](https://github.com/SublimeText/AAAPackageDev) plugin for converting `YAML` to `tmLanguage`.
 - `WIP` [Interactive editing](http://edwinb.wordpress.com/2013/10/28/interactive-idris-editing-with-vim/) functionality:
-  + You have to start idris REPL server manually: `idris <your source files and modules>`.
+  + You have to start idris REPL server manually. Just execute `idris <your source files and modules>` (enumerating source files is necessary to avoid `: openFile: does not exist (No such file or directory)`).
   + It calls `idris --client` with commands like `:addclause!`, just writing to your file (it doesn't use `--ideslave`).
   + There are some problems with this in idris itself: [idris-vim#11](https://github.com/idris-hackers/idris-vim/issues/11) for example.
   + The following commands are added to the Command Palette:
